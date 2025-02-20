@@ -12,7 +12,6 @@ namespace HanoiTowers
     {
         public Stack disks; // Stack en el que se almacenan los discos
         
-        // Constructor de la clase Tower
         // Recibe un numero de discos y los agrega a la torre
         public Tower(string name, int number) 
         {
@@ -23,7 +22,6 @@ namespace HanoiTowers
             }
         }
         
-        // Constructor de la clase Tower
         // Crea la torre sin ningun disco
         public Tower(string name)
         {
@@ -31,19 +29,16 @@ namespace HanoiTowers
         }
         
         // Metodo que permite mover discos entre dos torres
-        public void Move(Tower towerA, Tower towerB)
+        public void Move(Tower tower)
         {
             // Retorna un mensaje al usuario mostrandole que el movimiento no es valido
             if (disks.IsEmpty()){ Console.WriteLine("\nTorre Vacia, Intente Otro Movimiento"); }
             
-            // Mueve el disco de la torre A a la torre B si no hay discos en la torre B
-            else if(towerB.Get() == 0){ towerB.disks.Push(towerA.disks.Pop()); }
-            
             // Retorna un mensaje de error si el disco de la Torre A es mayor al disco de la Torre B
-            else if(towerA.Get() > towerB.Get()){ Console.WriteLine("\nILEGALISIMO"); }
+            else if(Get() > tower.Get() && tower.Get() != 0){ Console.WriteLine("\nILEGALISIMO"); }
             
             // Mueve el disco de una torre a otra
-            else{ towerB.disks.Push(towerA.disks.Pop()); }
+            else{ tower.disks.Push(disks.Pop()); } 
         }
         
         // Metodo que imprime una torre
@@ -56,12 +51,6 @@ namespace HanoiTowers
         public int Get()
         {
             return disks.Peek();
-        }
-        
-         // Metodo que retorna el disco siguiente de la torre
-        public int GetNext()
-        {
-            return disks.head.next.data;
         }
     }
 }
