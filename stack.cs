@@ -63,17 +63,38 @@ namespace Data.Structure.Stack
             {
                 Node current = head;
                 int[] stackData = new int[length];
+                
                 for(int i = 0; i < length; i++)
                 {
                     stackData[i] = current.data;
                     current = current.next;
                 } 
                 
-                Console.WriteLine("\n" + name + "\n");
-                for(int i = length; i > 0; i--)
+                int space = 0;
+                int level = length;
+                
+                // Muestra La Torre En Forma De Piramide 
+                for(int i = 0; i < length; i++) 
                 {
-                    Console.Write(stackData[i - 1] + " ");
-                } 
+                    for (int j = length - 1; j > i - 1; j--) 
+                    {
+                        Console.Write(" ");
+                    }
+                    
+                    for (int j = 0; j < space; j++)
+                    {
+                        Console.Write(" ");
+                        space -= 1;
+                    }
+                    
+                    for (int j = 0; j < stackData[i]; j++)
+                    {
+                        Console.Write(stackData[i]);
+                        Console.Write(" ");
+                    }
+                    level--;
+                    Console.WriteLine();
+                }
             }
         }
         
