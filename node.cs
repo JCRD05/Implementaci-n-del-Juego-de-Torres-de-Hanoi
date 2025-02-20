@@ -12,11 +12,11 @@ namespace Data.Structure.Stack
         public int data; // Dato que almacena el nodo
         public Node next; // Direccion de memoria del siguiente nodo
         
-         // Constructores de la clase Node
+        // Constructores de los nodos
         public Node(int data, Node next)
         {
             this.data = data;
-            this.next = next; // El nodo apuntara a la direccion de memoria especificada 
+            this.next = next;
         }
         
         public Node(int data)
