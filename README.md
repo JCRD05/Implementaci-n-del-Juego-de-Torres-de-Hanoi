@@ -1,49 +1,52 @@
-# Torres de Hanoi - Implementación en C#
+# Torre de Hanoi - Implementación en C#
 
 ## Descripción
-Esta implementación de las Torres de Hanoi en C# utiliza estructuras de datos como pilas (stacks) para simular el movimiento de discos entre tres torres. El programa permite a los usuarios jugar interactivamente, moviendo discos según las reglas clásicas del juego.
+Este proyecto implementa el juego de la **Torre de Hanoi** en C#, utilizando estructuras de datos como pilas para representar las torres y nodos para gestionar los discos.
+
+La aplicación permite:
+- Jugar manualmente moviendo discos entre torres.
+- Resolver el problema de manera automática utilizando un algoritmo recursivo.
+- Mostrar el estado actual de las torres en la consola.
 
 ## Estructura del Proyecto
-El código se organiza en varias clases:
 
-### 1. `Node.cs`
-Define la estructura de un nodo para la pila, que almacena un valor entero y una referencia al siguiente nodo.
+El código está organizado en las siguientes clases:
 
-### 2. `Stack.cs`
-Implementa una pila (stack) basada en nodos, con operaciones básicas como:
-- `Push(int data)`: Agrega un elemento a la pila.
-- `Pop()`: Elimina y devuelve el elemento superior de la pila.
-- `Peek()`: Devuelve el elemento superior sin eliminarlo.
-- `Print()`: Muestra el contenido de la pila en consola.
-- `IsEmpty()`: Verifica si la pila está vacía.
+### **1. Program.cs**
+Punto de entrada del programa. Inicia el juego llamando a `Game.Start()`.
 
-### 3. `Tower.cs`
-Representa cada torre del juego como una pila y permite mover discos entre torres. Métodos clave:
-- `Move(Tower towerA, Tower towerB)`: Mueve un disco de una torre a otra respetando las reglas del juego.
-- `Print()`: Muestra el estado actual de la torre.
-- `Get()`: Obtiene el disco superior de la torre.
+### **2. Game.cs**
+Gestiona el flujo del juego, mostrando las torres y permitiendo al usuario interactuar con ellas.
 
-### 4. `Game.cs`
-Controla la lógica del juego, incluyendo la inicialización y la interacción del usuario. Métodos principales:
-- `Start()`: Inicia el juego y permite al usuario elegir el número de discos.
-- `ShowTowers()`: Muestra las torres en la consola.
-- `Play(Tower towerA, Tower towerB)`: Permite mover discos entre torres y verifica el estado del juego.
-- `Win()`: Comprueba si el jugador ha completado el juego.
+### **3. Tower.cs**
+Representa una torre en la Torre de Hanoi. Contiene una pila (`Stack`) de discos y métodos para moverlos.
 
-### 5. `Program.cs`
-Punto de entrada del programa, donde se crea una instancia del juego y se inicia con `game.Start()`.
+### **4. Stack.cs**
+Implementa una estructura de pila (`Stack`) para almacenar los discos de cada torre.
 
-## Ejemplo de Uso
-1. Ejecutar el programa.
-2. Introducir el número de discos.
-3. Seleccionar movimientos utilizando las opciones del menú.
-4. Mover los discos hasta completar el juego.
-5. Salir del juego cuando se desee.
+### **5. Node.cs**
+Define la estructura de un nodo utilizado en la pila para almacenar los discos.
 
-## Reglas del Juego
-- Solo se puede mover un disco a la vez.
-- Un disco más grande no puede colocarse sobre uno más pequeño.
-- El objetivo es mover todos los discos de la Torre 1 a la Torre 3 utilizando la Torre 2 como auxiliar.
+## Uso
 
-¡Disfruta resolviendo las Torres de Hanoi en C#!
+### **Ejecutar el programa**
+
+1. Compila y ejecuta el programa en un entorno compatible con C#.
+2. Al iniciar, ingresa el número de discos que deseas jugar.
+3. Selecciona una de las opciones del menú para mover los discos entre torres.
+4. Puedes elegir resolver el juego automáticamente o continuar jugando manualmente.
+5. El juego finaliza cuando todos los discos han sido movidos a la tercera torre en orden.
+
+### **Opciones del Menú**
+
+- **Mover discos**: Permite al jugador mover un disco entre dos torres.
+- **Resolver automáticamente**: Usa el algoritmo recursivo para completar el juego.
+- **Reiniciar juego**: Permite empezar una nueva partida.
+- **Salir**: Finaliza la aplicación.
+
+## Algoritmo de Solución Automática
+El método `SolveTower(int n, Tower origen, Tower destino, Tower auxiliar)` resuelve el juego recursivamente siguiendo la estrategia clásica:
+1. Mover `n-1` discos desde la torre origen a la torre auxiliar.
+2. Mover el disco más grande directamente a la torre destino.
+3. Mover los `n-1` discos desde la torre auxiliar a la torre destino.
 
