@@ -16,6 +16,7 @@ namespace HanoiTowers
         public Tower tower1; 
         public Tower tower2;
         public Tower tower3;
+        int option; // Variable que guarda la operacion que el usuario elige
         
         // Intervalo en el que se realiza cada movimiento en la solucion automatica
         private double moveInterval;
@@ -83,12 +84,11 @@ namespace HanoiTowers
             Console.WriteLine("Presione Enter Para Iniciar El Juego");
             Console.ReadKey();
                 
-            int option = 0;
-            GameLoop(ref option);
+            GameLoop();
         }
         
         // Loop en el que se ejecuta el juego
-        public void GameLoop(ref int option)
+        public void GameLoop()
         {
             Console.Write("Introduzca La Cantidad De Discos: ");
             diskNumber = Convert.ToInt32(Console.ReadLine());
@@ -100,13 +100,13 @@ namespace HanoiTowers
             
             do // Ciclo que se repita hasta que se elija una opcion valida
             {
-                Actions(ref option); // Movimientos posibles del jugador
+                Actions(); // Movimientos posibles del jugador
                 if(option == 9){ return;} // Cierra el juego si el jugador asi lo desea
             } while(true | option != 9);
         }
         
         // Metodo que deja elegir las movimientos del jugador
-        public void Actions(ref int option)
+        public void Actions()
         {
             Console.WriteLine("¿Que desea realizar?\n");
             Console.Write("1. Mover Un Disco De La Torre 1 a la Torre 2     ");
@@ -145,7 +145,7 @@ namespace HanoiTowers
                     break;
                 case 8:
                     Console.WriteLine();
-                    GameLoop(ref option);
+                    GameLoop();
                     break;
                 case 9: 
                     Console.WriteLine("Gracias Por Jugar!");
