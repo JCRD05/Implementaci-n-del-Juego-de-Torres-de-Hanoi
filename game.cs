@@ -151,7 +151,7 @@ namespace HanoiTowers
                     Console.WriteLine("Gracias Por Jugar!");
                     break;
                 default: 
-                    Console.WriteLine("Elija una opcion entre 1 y 8");
+                    Console.WriteLine("Elija una opcion entre 1 y 9");
                     break;
             }
         }
